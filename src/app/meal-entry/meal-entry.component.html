@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="jumbotron clearfix">
+      <h1>Create a new meal</h1>
+      <p class="lead">enter meal details</p>
+      <hr class="my-4">
+
+      <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <div class="form-group">
+          <label for="name">Enter Meal Name</label>
+          <input type="text"
+                 ngModel
+                 name="name"
+                 required
+                 class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="description">Enter Meal Description</label>
+          <input type="text"
+                 ngModel
+                 name="description"
+                 required
+                 class="form-control">
+        </div>
+
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Protein</label>
+            <input type="text"
+                   ngModel
+                   name="protein"
+                   required
+                   class="form-control">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Carbs</label>
+            <input type="text"
+                   ngModel
+                   name="carbs"
+                   required
+                   class="form-control">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="name">Fat</label>
+            <input type="text"
+                   ngModel
+                   name="fat"
+                   required
+                   class="form-control">
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit"[disabled]="!form.valid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
