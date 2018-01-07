@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Meal} from './models/meal.model';
 import {MealService} from './services/meal.service';
 import {MacroService} from './services/macro.service';
@@ -6,13 +6,14 @@ import {TrainingProtocol} from './models/trainingProtocol.model';
 import {MacroSet} from './models/macroSet.model';
 import {LoggedEvent} from './models/loggingEvent.model';
 import {HistoryService} from './services/history.service';
+import * as fireBase from 'firebase';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   history: LoggedEvent[] = [];
   meals: Meal[] = [];
   trainingMacros: TrainingProtocol = new TrainingProtocol(new MacroSet(0, 0 , 0), new MacroSet(0, 0 , 0));
@@ -45,5 +46,11 @@ export class AppComponent {
     this.macroSerivce.getMeals().subscribe((meals) => {
       this.mealService.setMeals(meals);
     });
+    }
+    ngOnInit() {
+    fireBase.initializeApp( {
+        apiKey: "AIzaSyAxGMT6yMozo5l7QzpcZZP1yoJdivt1kjE",
+        authDomain: "ngmacrotrackerrefactored.firebaseapp.com",
+      });
     }
 }

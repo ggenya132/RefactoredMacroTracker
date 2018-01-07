@@ -12,6 +12,8 @@ import {MealService} from './services/meal.service';
 import {MacroService} from './services/macro.service';
 import {HistoryService} from './services/history.service';
 import {HttpClientModule} from '@angular/common/http';
+import {AuthService} from './auth.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 
@@ -23,13 +25,14 @@ import {HttpClientModule} from '@angular/common/http';
     MacroEntryComponent,
     TrainingProtocolEntryComponent,
     MealComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule
   ],
-  providers: [MealService, MacroService, HistoryService],
+  providers: [MealService, MacroService, HistoryService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
