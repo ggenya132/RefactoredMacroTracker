@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Meal} from './models/meal.model';
+import {Meal} from '../models/meal.model';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()
@@ -16,6 +16,11 @@ export class MealService {
 
   getMeals() {
     return this.meals.slice();
+  }
+
+  setMeals(meals: Meal[]) {
+    this.meals = meals;
+    this.mealAdded.next(this.meals);
   }
 
 

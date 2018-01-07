@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
-import {MacroService} from '../macro.service';
+import {MacroService} from '../services/macro.service';
 import {MacroSet} from '../models/macroSet.model';
 import {Subject} from 'rxjs/Subject';
 

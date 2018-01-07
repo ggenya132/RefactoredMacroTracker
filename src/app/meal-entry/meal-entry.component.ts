@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Meal} from '../models/meal.model';
 import {NgForm} from '@angular/forms';
 import {MacroSet} from '../models/macroSet.model';
-import {MealService} from '../meal.service';
+import {MealService} from '../services/meal.service';
 
 @Component({
   selector: 'app-meal-entry',

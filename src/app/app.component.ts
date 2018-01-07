@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import {Meal} from './models/meal.model';
-import {MealService} from './meal.service';
-import {MacroService} from './macro.service';
+import {MealService} from './services/meal.service';
+import {MacroService} from './services/macro.service';
 import {TrainingProtocol} from './models/trainingProtocol.model';
 import {MacroSet} from './models/macroSet.model';
 import {LoggedEvent} from './models/loggingEvent.model';
-import {HistoryService} from './history.service';
+import {HistoryService} from './services/history.service';
 
 @Component({
   selector: 'app-root',
@@ -37,4 +37,13 @@ export class AppComponent {
     console.log(this.trainingMacros);
   }
 
+    onSave() {
+    this.macroSerivce.putMeals();
+    }
+
+    onLoad() {
+    this.macroSerivce.getMeals().subscribe((meals) => {
+      this.mealService.setMeals(meals);
+    });
+    }
 }

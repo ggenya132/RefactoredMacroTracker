@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {LoggedEvent} from './models/loggingEvent.model';
-import {Meal} from './models/meal.model';
+import {LoggedEvent} from '../models/loggingEvent.model';
+import {Meal} from '../models/meal.model';
 import {Subject} from 'rxjs/Subject';
 
 @Injectable()
