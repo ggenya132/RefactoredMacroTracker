@@ -2,6 +2,7 @@
 
   <div class="row">
     <app-sign-up></app-sign-up>
+    <app-sign-in></app-sign-in>
     <app-macro-entry></app-macro-entry>
     <div class="col-md-4 col-md-offset-4"><ul class="list-group" *ngFor="let meal of meals">
       <app-meal [meal]="meal"></app-meal></ul></div>
@@ -13,6 +14,8 @@
   {{trainingMacros.trainingMacros.fat}}
   {{trainingMacros.trainingMacros.protein}}
 
+  <h1>Publish daily totals</h1>
+  <button class="btn-primary btn" (click)="onPublish()">PUBLISH</button>
   <h1>History</h1>
   <div *ngFor="let event of history">
     {{event.toString()}}

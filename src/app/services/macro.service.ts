@@ -6,17 +6,23 @@ import {MacroSet} from '../models/macroSet.model';
 import {HistoryService} from './history.service';
 import {HttpClient} from "@angular/common/http";
 import {MealService} from "./meal.service";
+import {AuthService} from '../auth.service';
+import * as firebase from 'firebase';
 
 @Injectable()
 export class MacroService {
-
-  fireBaseUrl = 'https://ngmacrotrackerrefactored.firebaseio.com/meals.json';
+  fireBaseUrl = 'https://ngmacrotrackerrefactored.firebaseio.com/'
+  fireBaseUrlMealsQuery = '/meals.json?auth='
   mealLogged = new Subject<MacroSet>();
   macrosSet = new Subject<TrainingProtocol>();
+  immutableProtocol: TrainingProtocol = new TrainingProtocol(new MacroSet(0, 0, 0), new MacroSet(0, 0, 0));
   trainingProtocol: TrainingProtocol = new TrainingProtocol(new MacroSet(0, 0, 0), new MacroSet(0, 0, 0));
+  dailyProtocol: string;
 
-  constructor(private history: HistoryService, private http: HttpClient, private mealService: MealService) {
-  }
+
+
+  constructor(private history: HistoryService, private http: HttpClient, private mealService: MealService,
+              private authService: AuthService) {}
 
   logMeal(meal: Meal, protocol: string) {
     const currentMacros: MacroSet = this.trainingProtocol[protocol];
@@ -30,8 +36,10 @@ export class MacroService {
   }
 
   onSetMacros(macroSet: MacroSet, macroProtocol: string) {
-    console.log("setting macros");
+    console.log('setting macros');
+    this.immutableProtocol[macroProtocol] = macroSet;
     this.trainingProtocol[macroProtocol] = macroSet;
+    this.dailyProtocol = macroProtocol;
     this.macrosSet.next(this.trainingProtocol);
   }
 
@@ -42,12 +50,18 @@ export class MacroService {
   }
 
   putMeals() {
-    this.http.put(this.fireBaseUrl, this.mealService.getMeals()).subscribe();
+
+    const user = firebase.auth().currentUser.uid;
+    this.http.put(this.fireBaseUrl  + user + this.fireBaseUrlMealsQuery  +
+      this.authService.getToken(), this.mealService.getMeals()).subscribe();
   }
 
 
   getMeals() {
-   return this.http.get<Meal[]>(this.fireBaseUrl);
+
+    const user = firebase.auth().currentUser.uid;
+   return this.http.get<Meal[]>(this.fireBaseUrl + user + this.fireBaseUrlMealsQuery  +
+     this.authService.getToken());
   }
 
 
