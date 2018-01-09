@@ -1,0 +1,61 @@
+.protein {
+  width: 30%;
+  height: 30%;
+  background: #c0392b;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: #ecf0f1;
+}
+
+.carbs {
+  width: 30%;
+  height: 30%;
+  background: #f1c40f;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: #ecf0f1;
+}
+
+.fats {
+  width: 100px;
+  height: 100px;
+  background: #2c3e50;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: #ecf0f1;
+}
+
+
+.protein:hover {
+  width: 100px;
+  height: 100px;
+  background: #9B2114;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: #ecf0f1;
+}
+
+
+.carbs:hover {
+  width: 100px;
+  height: 100px;
+  background: #BC9805;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: #ecf0f1;
+}
+
+.fats:hover {
+  width: 100px;
+  height: 100px;
+  background: #1B3147;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  color: #ecf0f1;
+}

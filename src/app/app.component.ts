@@ -9,6 +9,7 @@ import {HistoryService} from './services/history.service';
 import * as fireBase from 'firebase';
 import {PublishService} from './services/publish.service';
 import {DailyTotalsService} from './services/daily-totals.service';
+import {DayFinishedEvent} from './models/dayFinishedEvent.model';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import {DailyTotalsService} from './services/daily-totals.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  dailyTotal: DayFinishedEvent;
   history: LoggedEvent[] = [];
   meals: Meal[] = [];
   trainingMacros: TrainingProtocol = new TrainingProtocol(new MacroSet(0, 0 , 0), new MacroSet(0, 0 , 0));
@@ -64,5 +66,10 @@ export class AppComponent implements OnInit {
 
   onGetDailyTotals() {
     console.log(this.dailyTotalsService.getDailyTotals());
+  }
+
+  onSearchDate(date: string) {
+   this.dailyTotal = this.dailyTotalsService.getDailyTotals()[date];
+   console.log(this.dailyTotal);
   }
 }

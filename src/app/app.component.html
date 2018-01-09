@@ -1,4 +1,9 @@
-<div class="container"><div class="col-md-8 col-md-offset-2"><app-meal-entry></app-meal-entry></div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-8 col-md-offset-2"><app-meal-entry></app-meal-entry></div>
+  </div>
+
 
   <div class="row">
     <app-sign-up></app-sign-up>
@@ -21,5 +26,15 @@
   <div *ngFor="let event of history">
     {{event.toString()}}
 </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <input type="text" #date class="form-control" (keyup.enter)="onSearchDate(date.value)">
+    </div>
+    <div *ngIf="dailyTotal != null">
+      <app-daily-total [dailyTotal]="dailyTotal"></app-daily-total>
+    </div>
+  </div>
 </div>
+
 

@@ -8,6 +8,7 @@ import {AuthService} from '../auth.service';
 export class DailyTotalsService {
 
   dailyTotals = {};
+  dailyTotalsArray: DayFinishedEvent[];
   endPoint = 'https://ngmacrotrackerrefactored.firebaseio.com/'
   currentUser = '';
   node = '/dailytotals.json?auth='
@@ -19,9 +20,12 @@ export class DailyTotalsService {
     this.currentUser = fireBase.auth().currentUser.uid + '/';
     const finalEndPoint = this.endPoint + this.currentUser + this.node + this.authService.getToken();
     console.log(finalEndPoint)
-     this.httpClient.get<DayFinishedEvent[]>(finalEndPoint).subscribe((res) => {this.dailyTotals = res
-     console.log(res); });
+     this.httpClient.get<DayFinishedEvent[]>(finalEndPoint).subscribe((res: DayFinishedEvent[]) => {this.dailyTotalsArray = res;
+       console.log(res);
+       this.dailyTotals = res;
+       console.log(this.dailyTotalsArray); });
     return this.dailyTotals;
+     }
   }
 
-}
+

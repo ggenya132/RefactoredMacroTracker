@@ -17,6 +17,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import {PublishService} from './services/publish.service';
 import {DailyTotalsService} from './services/daily-totals.service';
+import { DailyTotalComponent } from './daily-total/daily-total.component';
+import { MacroLayoutComponent } from './macro-layout/macro-layout.component';
 
 
 
@@ -30,6 +32,8 @@ import {DailyTotalsService} from './services/daily-totals.service';
     MealComponent,
     SignUpComponent,
     SignInComponent,
+    DailyTotalComponent,
+    MacroLayoutComponent,
   ],
   imports: [
     BrowserModule,
