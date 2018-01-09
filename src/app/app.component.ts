@@ -8,6 +8,7 @@ import {LoggedEvent} from './models/loggingEvent.model';
 import {HistoryService} from './services/history.service';
 import * as fireBase from 'firebase';
 import {PublishService} from './services/publish.service';
+import {DailyTotalsService} from './services/daily-totals.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +22,8 @@ export class AppComponent implements OnInit {
 
   constructor(private mealService: MealService, private macroSerivce: MacroService,
               private historyService: HistoryService,
-              private publishService: PublishService) {
+              private publishService: PublishService,
+              private dailyTotalsService: DailyTotalsService) {
     this.history = this.historyService.getHistory();
     this.trainingMacros = this.macroSerivce.getMacros();
     this.meals = this.mealService.getMeals();
@@ -58,5 +60,9 @@ export class AppComponent implements OnInit {
 
   onPublish() {
     this.publishService.publishDailyTotal();
+  }
+
+  onGetDailyTotals() {
+    this.dailyTotalsService.getDailyTotals().subscribe(res => console.log(res));
   }
 }

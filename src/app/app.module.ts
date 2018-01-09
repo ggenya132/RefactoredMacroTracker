@@ -16,6 +16,7 @@ import {AuthService} from './auth.service';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { SignInComponent } from './sign-in/sign-in.component';
 import {PublishService} from './services/publish.service';
+import {DailyTotalsService} from './services/daily-totals.service';
 
 
 
@@ -35,7 +36,7 @@ import {PublishService} from './services/publish.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [MealService, MacroService, HistoryService, AuthService, PublishService],
+  providers: [MealService, MacroService, HistoryService, AuthService, PublishService, DailyTotalsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
