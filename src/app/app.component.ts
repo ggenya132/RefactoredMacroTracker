@@ -63,6 +63,6 @@ export class AppComponent implements OnInit {
   }
 
   onGetDailyTotals() {
-    this.dailyTotalsService.getDailyTotals().subscribe(res => console.log(res));
+    console.log(this.dailyTotalsService.getDailyTotals());
   }
 }

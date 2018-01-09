@@ -7,16 +7,21 @@ import {AuthService} from '../auth.service';
 @Injectable()
 export class DailyTotalsService {
 
+  dailyTotals = {};
   endPoint = 'https://ngmacrotrackerrefactored.firebaseio.com/'
   currentUser = '';
-  node = 'dailytotals.json?auth='
+  node = '/dailytotals.json?auth='
   constructor(private httpClient: HttpClient, private authService: AuthService) {
-    this.currentUser = fireBase.auth().currentUser.uid;
+
   }
 
   getDailyTotals() {
+    this.currentUser = fireBase.auth().currentUser.uid + '/';
     const finalEndPoint = this.endPoint + this.currentUser + this.node + this.authService.getToken();
-    return this.httpClient.get<DayFinishedEvent[]>(finalEndPoint);
+    console.log(finalEndPoint)
+     this.httpClient.get<DayFinishedEvent[]>(finalEndPoint).subscribe((res) => {this.dailyTotals = res
+     console.log(res); });
+    return this.dailyTotals;
   }
 
 }
