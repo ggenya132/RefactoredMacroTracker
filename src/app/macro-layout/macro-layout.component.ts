@@ -15,4 +15,9 @@ export class MacroLayoutComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  roundDown(number) {
+    return Math.floor(number).toString();
+  }
+
 }

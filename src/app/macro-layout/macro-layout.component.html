@@ -1,5 +1,23 @@
-<span class="protein">{{adherence.percentageProteinAdherance}}</span>
-<span class="carbs">{{adherence.percentageCarbAdherance}}</span>
-<span class="fats">{{adherence.percentageFatAdherance}}</span>
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: adherence.percentageProteinAdherance * 100 + '%'}"
+       [ngClass]="{'progress-bar-success': adherence.percentageProteinAdherance > .80, 'progress-bar-warning': adherence.percentageProteinAdherance < .80 && adherence.percentageFatAdherance > .60, 'progress-bar-danger': adherence.percentageProteinAdherance < .60 }">
 
+    {{roundDown(adherence.percentageProteinAdherance * 100 )}} % Protein
+  </div>
+</div>
 
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+       [ngStyle]="{width: adherence.percentageFatAdherance * 100 + '%'}"
+       [ngClass]="{'progress-bar-success': adherence.percentageFatAdherance > .80, 'progress-bar-warning': adherence.percentageFatAdherance < .80 && adherence.percentageFatAdherance > .60, 'progress-bar-danger': adherence.percentageFatAdherance < .60 }">
+    {{roundDown(adherence.percentageFatAdherance * 100 ) }} % Fat
+  </div>
+</div>
+
+<div class="progress">
+  <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width: adherence.percentageCarbAdherance * 100 + '%'}"
+       [ngClass]="{'progress-bar-success': adherence.percentageCarbAdherance > .80, 'progress-bar-warning': adherence.percentageCarbAdherance < .80 && adherence.percentageCarbAdherance > .60, 'progress-bar-danger': adherence.percentageCarbAdherance < .60 }">
+
+    {{roundDown(adherence.percentageCarbAdherance * 100)}} % Carbohydrates
+  </div>
+</div>

@@ -44,12 +44,18 @@ export class PublishService {
 
   publishDailyTotal() {
 
+    const tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1).substring(0, 10);
     const date = new Date().toISOString().substring(0, 10);
+    const date2 = new Date();
+    console.log(localISOTime);
+
+    console.log(date)
     const DailyTotals = new DayFinishedEvent( new Date, this.macroService.immutableProtocol,
       this.getMacrosLogged(), this.getAdherance(), this.historyService.getHistory());
     console.log(DailyTotals)
     this.httpClient.put(this.fireBaseUrl + firebase.auth().currentUser.uid +
-      this.fireBaseUrlDialyTotralsQuery + date + this.query + this.authService.getToken(), DailyTotals).subscribe(res => console.log(res));
+      this.fireBaseUrlDialyTotralsQuery + localISOTime + this.query + this.authService.getToken(), DailyTotals).subscribe(res => console.log(res));
   }
 
 
