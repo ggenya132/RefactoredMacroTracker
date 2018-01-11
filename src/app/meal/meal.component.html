@@ -1,7 +1,12 @@
-<li class="list-group-item" (click)="onClick()" >
-  {{meal.name}}:
-  {{meal.description}}
-  <span class="badge">{{meal.macros.carbohydrates}}</span>
-  <span class="badge">{{meal.macros.fat}}</span>
-  <span class="badge">{{meal.macros.protein}}</span>
-</li>
+ <div class="list-group" (click)="onClick()" >
+    <a href="#" class="list-group-item active">
+      <h4 class="list-group-item-heading">{{meal.name}}</h4>
+      <p class="list-group-item-text">
+        {{meal.description}}
+
+        <span class="badge">{{meal.macros.carbohydrates}}</span>
+        <span class="badge">{{meal.macros.fat}}</span>
+        <span class="badge">{{meal.macros.protein}}</span></p>
+
+    </a>
+  </div>
