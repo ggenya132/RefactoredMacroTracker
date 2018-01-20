@@ -1,36 +1,38 @@
-<div class="page-header">
-  <h1>Daily Totals for: </h1>
-  <small>{{toDateString()}}</small>
-</div>
-
-<app-macro-layout [adherence]="dailyTotal.dailyAdherance"></app-macro-layout>
-<button class="btn btn-primary" (click)="onShowMeals()">Show History</button>
-<div *ngIf="showMeals">
-  <div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading">Panel heading</div>
-    <div class="panel-body">
-      <p>...</p>
-    </div>
-
-    <!-- Table -->
-    <table class="table">
-      <tr>
-        <th>Meal Name</th>
-        <th>Meal Description</th>
-        <th>Meal Macros</th>
-        <th>Meal Log Time</th>
-
-      </tr>
-      <tr *ngFor="let event of dailyTotal.dailyMealLog">
-        <td>{{event.meal.name}} hello</td>
-        <td>{{event.meal.description}}</td>
-        <td>{{event.meal.macros}}</td>
-        <td>{{toTimeString(event.timeMealWasLogged)}}</td>
-      </tr>
-    </table>
+<div class="col-md-offset-2 col-md-8"><input type="text" #date class="form-control" (keyup.enter)="onSearchDate(date.value)">
+  <div class="page-header">
+    <h1>Daily Totals for: </h1>
+    <small>{{toDateString()}}</small>
   </div>
 
+  <app-macro-layout [adherence]="dailyTotal.dailyAdherance"></app-macro-layout>
+  <button class="btn btn-primary" (click)="onShowMeals()">Show History</button>
+  <div *ngIf="showMeals">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Panel heading</div>
+      <div class="panel-body">
+        <p>...</p>
+      </div>
+
+      <!-- Table -->
+      <table class="table">
+        <tr>
+          <th>Meal Name</th>
+          <th>Meal Description</th>
+          <th>Meal Macros</th>
+          <th>Meal Log Time</th>
+
+        </tr>
+        <tr *ngFor="let event of dailyTotal.dailyMealLog">
+          <td>{{event.meal.name}} hello</td>
+          <td>{{event.meal.description}}</td>
+          <td>{{event.meal.macros}}</td>
+          <td>{{toTimeString(event.timeMealWasLogged)}}</td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
 </div>
 
 

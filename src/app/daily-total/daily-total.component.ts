@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {DayFinishedEvent} from '../models/dayFinishedEvent.model';
+import {DailyTotalsService} from '../services/daily-totals.service';
 
 @Component({
   selector: 'app-daily-total',
@@ -9,10 +10,13 @@ import {DayFinishedEvent} from '../models/dayFinishedEvent.model';
 export class DailyTotalComponent implements OnInit {
 
   showMeals: boolean;
-  @Input()
+  // @Input()
+  // dailyTotal: DayFinishedEvent;
+
+
   dailyTotal: DayFinishedEvent;
 
-  constructor() { }
+  constructor(private dailyTotalsService: DailyTotalsService ) { }
 
   ngOnInit() {
   }
@@ -37,6 +41,12 @@ export class DailyTotalComponent implements OnInit {
 
     return  hr.toString() + ':' + min + ' AM';
 
+  }
+
+  onSearchDate(date: string) {
+    console.log(this.dailyTotalsService.getDailyTotals()[date]);
+    this.dailyTotal = this.dailyTotalsService.getDailyTotals()[date];
+    console.log(this.dailyTotal);
   }
 
 

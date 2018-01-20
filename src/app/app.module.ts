@@ -19,12 +19,23 @@ import {PublishService} from './services/publish.service';
 import {DailyTotalsService} from './services/daily-totals.service';
 import { DailyTotalComponent } from './daily-total/daily-total.component';
 import { MacroLayoutComponent } from './macro-layout/macro-layout.component';
+import {RoutingModule} from './routing/routing.module';
+import { RouterModule, Routes } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import {DropdownDirective} from './shared/dropdown.directive';
 
 
 
+const routes: Routes = [
+  {path: 'signIn', component: SignInComponent},
+  {path: 'signUp', component: SignUpComponent},
+  {path: 'dailyTotalsHistory', component: DailyTotalComponent},
+  { path: '',   redirectTo: '/signIn', pathMatch: 'full' },
+  {path: '**', component: SignInComponent}];
 
 @NgModule({
   declarations: [
+    DropdownDirective,
     AppComponent,
     MealEntryComponent,
     MacroEntryComponent,
@@ -34,8 +45,10 @@ import { MacroLayoutComponent } from './macro-layout/macro-layout.component';
     SignInComponent,
     DailyTotalComponent,
     MacroLayoutComponent,
+    HeaderComponent,
   ],
   imports: [
+    RouterModule.forRoot(routes),
     BrowserModule,
     FormsModule,
     HttpClientModule
