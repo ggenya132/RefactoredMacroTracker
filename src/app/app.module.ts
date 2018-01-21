@@ -23,10 +23,13 @@ import {RoutingModule} from './routing/routing.module';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import {DropdownDirective} from './shared/dropdown.directive';
+import { MealsComponent } from './meals/meals.component';
+import { DailyMacrosComponent } from './daily-macros/daily-macros.component';
 
 
 
 const routes: Routes = [
+  {path: 'dailyMacros', component: DailyMacrosComponent},
   {path: 'signIn', component: SignInComponent},
   {path: 'signUp', component: SignUpComponent},
   {path: 'dailyTotalsHistory', component: DailyTotalComponent},
@@ -46,6 +49,8 @@ const routes: Routes = [
     DailyTotalComponent,
     MacroLayoutComponent,
     HeaderComponent,
+    MealsComponent,
+    DailyMacrosComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),

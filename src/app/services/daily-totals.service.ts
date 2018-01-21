@@ -15,7 +15,7 @@ export class DailyTotalsService {
   constructor(private httpClient: HttpClient, private authService: AuthService) {
 
   }
-
+ // *to do: make this component make this call when the user loads data*
   getDailyTotals() {
     this.currentUser = fireBase.auth().currentUser.uid + '/';
     const finalEndPoint = this.endPoint + this.currentUser + this.node + this.authService.getToken();

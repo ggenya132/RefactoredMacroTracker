@@ -36,5 +36,9 @@ export class AuthService {
     );
     return this.token;
   }
+
+  getUser() {
+    return fireBase.auth().currentUser;
+  }
 }
 

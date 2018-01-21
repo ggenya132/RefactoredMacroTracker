@@ -26,7 +26,7 @@
         <tr *ngFor="let event of dailyTotal.dailyMealLog">
           <td>{{event.meal.name}} hello</td>
           <td>{{event.meal.description}}</td>
-          <td>{{event.meal.macros}}</td>
+          <td>P:{{event.meal.macros.protein}} C:{{event.meal.macros.carbohydrates}} F:{{event.meal.macros.carbohydrates}}</td>
           <td>{{toTimeString(event.timeMealWasLogged)}}</td>
         </tr>
       </table>

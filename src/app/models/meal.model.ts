@@ -6,4 +6,8 @@ export class Meal {
   toString() {
    return this.name + this.description + this.macros.toString();
   }
+
+  toMacroString() {
+    return 'Protein: ' + this.macros.protein  + ' Fat: ' + this.macros.fat + ' Carbohydrate: ' + this.macros.carbohydrates;
+  }
 }

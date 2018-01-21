@@ -31,8 +31,11 @@ export class SignInComponent implements OnInit {
 
 
     this.authService.logIn(email, password);
-    this.signedIn = this.authService.getToken() != null;
+    this.signedIn = this.authService.getToken().length > 0;
+    console.log(this.authService.getToken());
     if (this.signedIn) {
+      console.log(this.signedIn);
+      console.log('signing in');
       this.statusMessage = 'Signed In!';
     }
 

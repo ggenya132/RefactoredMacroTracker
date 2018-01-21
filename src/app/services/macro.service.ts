@@ -58,10 +58,13 @@ export class MacroService {
 
 
   getMeals() {
+    console.log(firebase.auth().currentUser == null);
 
+    console.log(firebase.auth().currentUser.uid);
     const user = firebase.auth().currentUser.uid;
+
    return this.http.get<Meal[]>(this.fireBaseUrl + user + this.fireBaseUrlMealsQuery  +
-     this.authService.getToken());
+   this.authService.getToken());
   }
 
 

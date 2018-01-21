@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable, OnInit} from '@angular/core';
 import {Meal} from '../models/meal.model';
 import {Subject} from 'rxjs/Subject';
+import {MacroService} from './macro.service';
 
 @Injectable()
-export class MealService {
+export class MealService  {
+
+  constructor() {
+
+  }
 
   mealAdded = new  Subject<Meal[]>();
   meals: Meal[] = [];
-  constructor() { }
 
   addMeal(meal: Meal) {
   this.meals.push(meal);
@@ -22,6 +26,10 @@ export class MealService {
     this.meals = meals;
     this.mealAdded.next(this.meals);
   }
+
+  // ngOnInit() {
+  //   this.macroService.getMeals().subscribe((res: Meal[]) => this.meals = res);
+  // }
 
 
 
