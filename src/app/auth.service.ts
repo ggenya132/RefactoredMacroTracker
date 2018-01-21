@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import * as fireBase from 'firebase';
+import {Subject} from 'rxjs/Subject';
 @Injectable()
 export class AuthService {
-
+  errorOccurred = new Subject();
+  error;
   token = '';
   constructor() { }
 
@@ -20,7 +22,12 @@ export class AuthService {
        fireBase.auth().currentUser.getIdToken().then(
          token => this.token = token
        );
-    }).catch(error => console.log(error));
+      return res;
+    }).catch(error => {
+      this.error = error;
+      this.errorOccurred.next(this.error);
+    }
+    );
   }
 
   getToken() {

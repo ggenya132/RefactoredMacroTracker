@@ -8,10 +8,20 @@ import {AuthService} from '../auth.service';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
+  statusMessage = ''
+  errorMessage;
+  signedIn = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService) {
+  }
 
   ngOnInit() {
+
+    this.authService.errorOccurred.subscribe(res => {
+      this.errorMessage = res['message'];
+      this.statusMessage = this.errorMessage;
+      console.log(this.errorMessage);
+    });
   }
 
 
@@ -21,6 +31,10 @@ export class SignInComponent implements OnInit {
 
 
     this.authService.logIn(email, password);
-  }
+    this.signedIn = this.authService.getToken() != null;
+    if (this.signedIn) {
+      this.statusMessage = 'Signed In!';
+    }
 
+  }
 }

@@ -1,0 +1,26 @@
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/signUp" class="navbar-brand">Macro Tracker</a>
+    </div>
+
+    <div class="navbar-default">
+      <ul class="nav navbar-nav">
+        <li><a href="">Daily Macros</a></li>
+        <li><a routerLink="/dailyTotalsHistory">History</a></li>
+        <li><a href="">Edit Meals</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown" appDropdown>
+          <a class="dropdown-toggle " role="button" >Manage <span class="caret"></span></a>
+           <ul class="dropdown-menu ">
+             <li><a href="">Save Data</a></li>
+             <li><a href="">Fetch Data</a></li>
+           </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
