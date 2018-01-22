@@ -19,6 +19,4 @@ export class MealComponent implements OnInit {
 
     this.macroService.logMeal(this.meal, 'trainingMacros');
   }
-
-
 }

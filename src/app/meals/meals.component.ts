@@ -9,11 +9,9 @@ import {MacroService} from '../services/macro.service';
   styleUrls: ['./meals.component.css']
 })
 export class MealsComponent implements OnInit {
-  constructor(private macroService: MacroService) {
-  }
 
   meals: Meal[] = [];
-  constructor(private mealService: MealService) { }
+  constructor(private mealService: MealService, private macroService: MacroService) { }
 
   ngOnInit() {
     this.macroService.getMeals().subscribe((meals: Meal[]) => {

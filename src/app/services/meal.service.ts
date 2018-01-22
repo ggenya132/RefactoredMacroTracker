@@ -7,7 +7,6 @@ import {MacroService} from './macro.service';
 export class MealService  {
 
   constructor() {
-
   }
 
   mealAdded = new  Subject<Meal[]>();
