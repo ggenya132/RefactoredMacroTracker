@@ -25,7 +25,8 @@ import { HeaderComponent } from './header/header.component';
 import {DropdownDirective} from './shared/dropdown.directive';
 import { MealsComponent } from './meals/meals.component';
 import { DailyMacrosComponent } from './daily-macros/daily-macros.component';
-
+import { ChartsModule } from 'ng2-charts';
+import { MacroChartComponent } from './macro-chart/macro-chart.component';
 
 
 const routes: Routes = [
@@ -51,12 +52,14 @@ const routes: Routes = [
     HeaderComponent,
     MealsComponent,
     DailyMacrosComponent,
+    MacroChartComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [MealService, MacroService, HistoryService, AuthService, PublishService, DailyTotalsService],
   bootstrap: [AppComponent]

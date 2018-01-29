@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {DailyTotalsService} from '../services/daily-totals.service';
+import {Adherance} from '../models/aherance.model';
+import {MacroSet} from '../models/macroSet.model';
+import {MacroService} from '../services/macro.service';
+import {TrainingProtocol} from '../models/trainingProtocol.model';
 
 @Component({
   selector: 'app-daily-macros',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DailyMacrosComponent implements OnInit {
 
-  constructor() { }
+  macrosSet = false;
+  traingingProtocol: TrainingProtocol;
 
-  ngOnInit() {
+  constructor(private macroService: MacroService) { }
+
+  getAreMacrosInitallySet() {
+    return this.macroService.macrosInitiallySet;
   }
 
+  ngOnInit() {
+
+    this.macroService.macrosSet.subscribe((response: TrainingProtocol) => {
+      this.traingingProtocol = response;
+      console.log(this.traingingProtocol);
+      this.macrosSet = true;
+    });
+  }
 }

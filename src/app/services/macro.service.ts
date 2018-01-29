@@ -11,6 +11,7 @@ import * as firebase from 'firebase';
 
 @Injectable()
 export class MacroService {
+  macrosInitiallySet = false;
   fireBaseUrl = 'https://ngmacrotrackerrefactored.firebaseio.com/'
   fireBaseUrlMealsQuery = '/meals.json?auth='
   mealLogged = new Subject<MacroSet>();
@@ -41,6 +42,7 @@ export class MacroService {
     this.trainingProtocol[macroProtocol] = macroSet;
     this.dailyProtocol = macroProtocol;
     this.macrosSet.next(this.trainingProtocol);
+    this.macrosInitiallySet = true;
   }
 
 
